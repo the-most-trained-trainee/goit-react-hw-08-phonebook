@@ -1,12 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const baseURL = 'https://63badf5e56043ab3c7a7124b.mockapi.io';
+const baseURL = 'https://connections-api.herokuapp.com';
 
 const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, thunkAPI) => {
+
+  async (token, thunkAPI) => {
     try {
-      const response = await fetch(baseURL + `/contacts`);
+      const response = await fetch(baseURL + `/contacts`, {
+        method: 'get',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `${token}`
+        }
+      });
       const responseJSON = await response.json();
       return responseJSON;
     } catch (e) {
@@ -19,12 +26,17 @@ const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     const toAdd = { 'name': contact.name, 'phone': contact.number }
+
+
     try {
+      console.log(toAdd);
+
       const addingContact = await fetch(baseURL + `/contacts`, {
         method: 'post',
         body: JSON.stringify(toAdd),
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'authorization': ``
         }
       });
       const addingContactJSON = addingContact.json();

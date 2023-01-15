@@ -25,6 +25,7 @@ const phoneBookSlice = createSlice({
       state.isLoading = true;
     },
     [addContact.fulfilled](state, action) {
+      console.log('contact add works');
       state.isLoading = false;
       state.error = null;
       state.contacts.push(action.payload);
