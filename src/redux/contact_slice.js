@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, removeContact } from "./operations";
+import { fetchContacts, addContact, removeContact, clearContacts } from "./operations";
 
 const phoneBookSlice = createSlice({
   name: 'contacts',
@@ -25,7 +25,6 @@ const phoneBookSlice = createSlice({
       state.isLoading = true;
     },
     [addContact.fulfilled](state, action) {
-      console.log('contact add works');
       state.isLoading = false;
       state.error = null;
       state.contacts.push(action.payload);
@@ -46,6 +45,9 @@ const phoneBookSlice = createSlice({
     [removeContact.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    [clearContacts.fulfilled](state, action) {
+      state.contacts = []
     }
   }
 });

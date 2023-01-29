@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import StyledForm from './StyledContactForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact, updateContact } from 'redux/operations';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -9,6 +9,7 @@ const ContactForm = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.contacts);
+  const token = useSelector(state => state.auth.token);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -26,17 +27,37 @@ const ContactForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (!contacts.some(entry => entry.name === name)) {
       dispatch(
         addContact({
-          name: name,
-          number: number,
+          newContact: {
+            name: name,
+            number: number,
+          },
+          key: token,
         })
       );
       setName('');
       setNumber('');
     } else {
-      alert(name + ' is already in contacts.');
+      alert(name + ' is updated');
+
+      const contactIndex = contacts.findIndex(entry => entry.name === name);
+
+      dispatch(
+        updateContact({
+          contact: {
+            name: name,
+            number: number,
+          },
+          key: token,
+          id: contacts[contactIndex].id,
+          contactIndex: contactIndex,
+        })
+      );
+      setName('');
+      setNumber('');
     }
   };
 

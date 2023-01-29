@@ -10,7 +10,6 @@ const ContactList = () => {
     let result = [];
     if (filterRequest === '') {
       result = allContacts;
-      console.log(result);
     } else {
       result = allContacts.filter(contact =>
         contact.name.toUpperCase().includes(filterRequest.toUpperCase())

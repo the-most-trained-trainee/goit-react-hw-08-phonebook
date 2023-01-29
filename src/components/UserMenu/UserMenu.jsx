@@ -1,7 +1,7 @@
 const UserMenu = () => {
   return (
     <div>
-      <p>mango@mail.com</p>
+      <p>UserMenu: Welcome, UserName </p>
       <button>Logout</button>
     </div>
   );

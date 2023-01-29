@@ -18,7 +18,6 @@ const register = createAsyncThunk('auth/register', async credentials => {
       },
     });
     const registerUserJSON = registerUser.json();
-    console.log(registerUserJSON);
     return registerUserJSON;
   } catch (error) {
     console.log(error);
@@ -43,7 +42,6 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 
 const logOut = createAsyncThunk('auth/logout', async credentials => {
   try {
-    console.log(credentials);
     const leavingUser = await fetch(baseURL + `/users/logout`, {
       method: 'post',
       headers: {
@@ -52,7 +50,6 @@ const logOut = createAsyncThunk('auth/logout', async credentials => {
       }
     });
     const leavingUserJSON = leavingUser.json();
-    console.log(leavingUserJSON);
     return leavingUserJSON;
   } catch (error) {
     console.log(error);

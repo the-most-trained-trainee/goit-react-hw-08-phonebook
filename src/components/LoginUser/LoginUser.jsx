@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operations';
+import { useNavigate } from 'react-router-dom';
 
 const scheme = yup.object().shape({
   email: yup.string().email(),
@@ -12,10 +13,12 @@ const initialValues = { email: '', password: '' };
 
 const LoginUser = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values));
     actions.resetForm();
+    navigate('/contacts');
   };
 
   return (
