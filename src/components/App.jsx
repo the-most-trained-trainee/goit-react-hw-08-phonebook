@@ -9,10 +9,12 @@ import UserMenu from './UserMenu/UserMenu';
 import UserRegister from './UserRegister/UserRegister';
 import LoginUser from './LoginUser/LoginUser';
 import LogoutUser from './LogoutUser/LogoutUser';
-
 import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 
 // Маршрутизація​
+// Vasily Vasilovich
+// vasilander@mail.com
+// 12345678
 
 import Homepage from './TempComponents/Homepage';
 import Loginpage from './TempComponents/Login';
@@ -25,7 +27,6 @@ import Layout from './TempComponents/Layout';
 
 const App = () => {
   const dispatch = useDispatch();
-
   let token = useSelector(state => state.auth.token);
   let isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
@@ -40,8 +41,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />}></Route>
-          <Route path="register" element={<Registerpage />}></Route>
           <Route path="login" element={<Loginpage />}></Route>
+          <Route path="register" element={<Registerpage />}></Route>
           <Route path="contacts" element={<Contactspage />}></Route>
         </Route>
 

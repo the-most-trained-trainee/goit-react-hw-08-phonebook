@@ -39,7 +39,7 @@ const phoneBookSlice = createSlice({
     [removeContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      const index = state.contacts.findIndex(contact => contact.id === action.meta.arg);
+      const index = state.contacts.findIndex(contact => contact.id === action.meta.arg.id);
       state.contacts.splice(index, 1);
     },
     [removeContact.rejected](state, action) {

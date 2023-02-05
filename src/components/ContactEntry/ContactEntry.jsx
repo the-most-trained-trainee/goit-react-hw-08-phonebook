@@ -1,6 +1,6 @@
 import ContactEntryStyled from './StyledContactEntry';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeContact } from 'redux/operations';
+import { removeContact, fetchContacts } from 'redux/operations';
 import PropTypes from 'prop-types';
 
 const ContactEntry = ({ name, number, id }) => {
