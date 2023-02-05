@@ -1,10 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// const userA = {
-//   name: 'Valerian Valerianovich',
-//   email: 'valerian@mail.com',
-//   password: '987654321',
-// };
+
 
 const baseURL = 'https://connections-api.herokuapp.com';
 
