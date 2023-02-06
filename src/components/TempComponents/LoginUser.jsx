@@ -1,28 +1,23 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/auth-operations';
+import { logIn } from 'redux/auth/auth-operations';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button } from '@mui/material';
 
 const scheme = yup.object().shape({
-  name: yup.string().required(),
   email: yup.string().email(),
   password: yup.string().min(6).max(12).required(),
 });
 
-const initialValues = {
-  name: '',
-  email: '',
-  password: '',
-};
+const initialValues = { email: '', password: '' };
 
-const UserRegister = () => {
+const LoginUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
-    dispatch(register(values));
+    dispatch(logIn(values));
     actions.resetForm();
     navigate('/contacts');
   };
@@ -36,17 +31,6 @@ const UserRegister = () => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit} autoComplete="off">
-        <TextField
-          fullWidth
-          id="name"
-          name="name"
-          label="name"
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          error={formik.touched.name && Boolean(formik.errors.name)}
-          helperText={formik.touched.name && formik.errors.name}
-          autoComplete="off"
-        />
         <TextField
           fullWidth
           id="email"
@@ -78,4 +62,4 @@ const UserRegister = () => {
   );
 };
 
-export default UserRegister;
+export default LoginUser;

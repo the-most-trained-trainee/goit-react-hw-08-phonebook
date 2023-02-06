@@ -4,9 +4,9 @@ import { fetchContacts } from 'redux/operations';
 import UserRegister from './TempComponents/UserRegister';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './TempComponents/Homepage';
-import Loginpage from './TempComponents/Login';
 import Contactspage from './TempComponents/Contacts';
 import Layout from './TempComponents/Layout';
+import LoginUser from './TempComponents/LoginUser';
 
 // Vasily Vasilovich
 // vasilander@mail.com
@@ -32,7 +32,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />}></Route>
-          <Route path="login" element={<Loginpage />}></Route>
+          <Route path="login" element={<LoginUser />}></Route>
           <Route path="register" element={<UserRegister />}></Route>
           <Route path="contacts" element={<Contactspage />}></Route>
         </Route>
