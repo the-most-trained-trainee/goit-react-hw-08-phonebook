@@ -29,9 +29,6 @@ const ContactEntry = ({ name, number, id }) => {
           {name}:
         </Typography>
         <Typography component="span">{number}</Typography>
-
-        {/* <span>{name}: </span> */}
-        {/* <span>{number}</span> */}
         <IconButton aria-label="delete" onClick={onDelete}>
           <HighlightOffIcon color="secondary" />
         </IconButton>
