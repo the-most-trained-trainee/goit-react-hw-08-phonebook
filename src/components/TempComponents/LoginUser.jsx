@@ -55,7 +55,7 @@ const LoginUser = () => {
           autoComplete="off"
         />
         <Button color="primary" variant="contained" fullWidth type="submit">
-          Register
+          Login
         </Button>
       </form>
     </div>

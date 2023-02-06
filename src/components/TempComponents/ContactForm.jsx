@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import StyledForm from './StyledContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, updateContact } from 'redux/operations';
+import { TextField, Button } from '@mui/material';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -62,30 +62,33 @@ const ContactForm = () => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
-      <StyledForm>
-        <label htmlFor="">Name</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-        <label htmlFor="">Phone</label>
-        <input
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-        <button type="submit">Add contact</button>
-      </StyledForm>
+    <form onSubmit={handleSubmit}>
+      <TextField
+        fullWidth
+        type="text"
+        id="name"
+        name="name"
+        label="Contact name"
+        value={name}
+        onChange={handleChange}
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+      />
+      <TextField
+        fullWidth
+        type="tel"
+        name="number"
+        label="Phone"
+        value={number}
+        onChange={handleChange}
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        required
+      />
+      <Button color="primary" variant="contained" fullWidth type="submit">
+        Add
+      </Button>
     </form>
   );
 };

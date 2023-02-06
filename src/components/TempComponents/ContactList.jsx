@@ -1,5 +1,4 @@
-import ContactEntry from '../ContactEntry/ContactEntry';
-import EntriesListStyled from './StyledEntriesList';
+import ContactEntry from './ContactEntry';
 import { useSelector } from 'react-redux';
 
 const ContactList = () => {
@@ -19,7 +18,7 @@ const ContactList = () => {
   };
 
   return (
-    <EntriesListStyled>
+    <div>
       {getFilteredContacts().map(contact => (
         <ContactEntry
           key={contact.id}
@@ -28,7 +27,7 @@ const ContactList = () => {
           number={contact.number}
         />
       ))}
-    </EntriesListStyled>
+    </div>
   );
 };
 

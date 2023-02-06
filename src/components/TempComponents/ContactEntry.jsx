@@ -1,6 +1,9 @@
-import ContactEntryStyled from './StyledContactEntry';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeContact, fetchContacts } from 'redux/operations';
+import { removeContact } from 'redux/operations';
+import { IconButton } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { Card } from '@mui/material';
+
 import PropTypes from 'prop-types';
 
 const ContactEntry = ({ name, number, id }) => {
@@ -12,11 +15,15 @@ const ContactEntry = ({ name, number, id }) => {
   };
 
   return (
-    <ContactEntryStyled>
-      <span>{name}: </span>
-      <span>{number}</span>
-      <button onClick={onDelete}>Delete</button>
-    </ContactEntryStyled>
+    <div>
+      <Card variant="outlined">
+        <span>{name}: </span>
+        <span>{number}</span>
+        <IconButton aria-label="delete" onClick={onDelete}>
+          <HighlightOffIcon color="secondary" />
+        </IconButton>
+      </Card>
+    </div>
   );
 };
 
