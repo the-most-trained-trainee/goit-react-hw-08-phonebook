@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import UserRegister from './TempComponents/UserRegister';
-import { Routes, Route, Navigate } from 'react-router-dom';
 import Contactspage from './TempComponents/Contacts';
 import Layout from './TempComponents/Layout';
 import LoginUser from './TempComponents/LoginUser';

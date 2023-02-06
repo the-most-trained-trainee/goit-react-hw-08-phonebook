@@ -22,7 +22,7 @@ const ContactEntry = ({ name, number, id }) => {
           alignItems: 'center',
           pl: 2,
           pr: 2,
-          gap: 0.4,
+          gap: 0.3,
         }}
       >
         <Typography component="span" sx={{ fontWeight: '700' }}>
