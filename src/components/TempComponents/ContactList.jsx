@@ -18,7 +18,16 @@ const ContactList = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '450px',
+        gap: '10px',
+      }}
+    >
       {getFilteredContacts().map(contact => (
         <ContactEntry
           key={contact.id}

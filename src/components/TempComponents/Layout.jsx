@@ -1,10 +1,14 @@
+import UserMenu from 'components/TempComponents/UserMenu';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-import { AppBar, Toolbar, Typography, Container } from '@mui/material';
-import { Button, ButtonGroup } from '@mui/material';
-
-import UserMenu from 'components/TempComponents/UserMenu';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Button,
+  ButtonGroup,
+} from '@mui/material';
 
 const Layout = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
@@ -35,7 +39,15 @@ const Layout = () => {
           </Toolbar>
         </AppBar>
       </header>
-      <Container>
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '450px',
+        }}
+      >
         <Outlet />
       </Container>
     </>

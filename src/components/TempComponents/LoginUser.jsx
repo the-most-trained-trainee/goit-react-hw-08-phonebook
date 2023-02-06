@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operations';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Typography, Link } from '@mui/material';
 
 const scheme = yup.object().shape({
   email: yup.string().email(),
@@ -30,9 +30,17 @@ const LoginUser = () => {
 
   return (
     <div>
+      <Typography mt={2}>
+        Not registered? Proceed to <Link href="/register">register page</Link>
+      </Typography>
+
       <form onSubmit={formik.handleSubmit} autoComplete="off">
         <TextField
           fullWidth
+          sx={{
+            mt: 2,
+            mb: 2,
+          }}
           id="email"
           name="email"
           label="email"
@@ -44,6 +52,10 @@ const LoginUser = () => {
         />
         <TextField
           fullWidth
+          sx={{
+            mt: 2,
+            mb: 2,
+          }}
           id="password"
           name="password"
           label="password"
@@ -54,7 +66,7 @@ const LoginUser = () => {
           helperText={formik.touched.password && formik.errors.password}
           autoComplete="off"
         />
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <Button fullWidth color="primary" variant="contained" type="submit">
           Login
         </Button>
       </form>
