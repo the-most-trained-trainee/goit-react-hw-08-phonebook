@@ -22,7 +22,6 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<Homepage />}></Route> */}
           <Route index element={<Navigate to="/login" replace />}></Route>
           <Route path="/login" index element={<LoginUser />}></Route>
           <Route path="/register" element={<UserRegister />}></Route>
