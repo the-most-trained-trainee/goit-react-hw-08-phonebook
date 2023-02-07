@@ -36,7 +36,7 @@ const UserRegister = () => {
   return (
     <div>
       <Typography mt={2}>
-        Already registered? Proceed to <Link href="/login">login page</Link>
+        Already registered? Proceed to <Link href="login">login page</Link>
       </Typography>
       <form onSubmit={formik.handleSubmit} autoComplete="off">
         <TextField
