@@ -31,8 +31,8 @@ const Layout = () => {
                 variant="contained"
                 aria-label="outlined primary button group"
               >
-                <Button href="register">Register</Button>
-                <Button href="login">Login</Button>
+                <Button href="/register">Register</Button>
+                <Button href="/login">Login</Button>
               </ButtonGroup>
             )}
             {isLoggedIn && <UserMenu />}
