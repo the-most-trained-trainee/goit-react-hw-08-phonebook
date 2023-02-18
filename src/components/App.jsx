@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import UserRegister from './TempComponents/UserRegister';
@@ -7,15 +7,22 @@ import Contactspage from './TempComponents/Contacts';
 import Layout from './TempComponents/Layout';
 import LoginUser from './TempComponents/LoginUser';
 
+// vasiapupukin@mail.net
+// 12345678901
+
 const App = () => {
   const dispatch = useDispatch();
   let token = useSelector(state => state.auth.token);
   let isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(fetchContacts(token));
     }
+    // else {
+    //   navigate('/login');
+    // }
   }, [dispatch, isLoggedIn, token]);
 
   return (
