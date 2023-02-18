@@ -1,11 +1,15 @@
-import { useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useEffect, lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
-import UserRegister from './TempComponents/UserRegister';
-import Contactspage from './TempComponents/Contacts';
+
+import { refreshUser } from 'redux/auth/auth-operations';
+
 import Layout from './TempComponents/Layout';
-import LoginUser from './TempComponents/LoginUser';
+
+const UserRegister = lazy(() => import('./TempComponents/UserRegister'));
+const Contactspage = lazy(() => import('./TempComponents/Contacts'));
+const LoginUser = lazy(() => import('./TempComponents/LoginUser'));
 
 // vasiapupukin@mail.net
 // 12345678901
@@ -14,16 +18,16 @@ const App = () => {
   const dispatch = useDispatch();
   let token = useSelector(state => state.auth.token);
   let isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(fetchContacts(token));
     }
-    // else {
-    //   navigate('/login');
-    // }
   }, [dispatch, isLoggedIn, token]);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <>

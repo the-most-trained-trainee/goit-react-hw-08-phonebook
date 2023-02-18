@@ -52,4 +52,29 @@ const logOut = createAsyncThunk('auth/logout', async credentials => {
   }
 })
 
-export { register, logIn, logOut };
+const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      const response = await fetch(baseURL + `/users/current`, {
+        method: 'get',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `${persistedToken}`
+        }
+      });
+      const responseJSON = await response.json();
+      return responseJSON;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export { register, logIn, logOut, refreshUser };

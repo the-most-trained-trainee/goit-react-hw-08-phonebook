@@ -1,5 +1,6 @@
 import UserMenu from 'components/TempComponents/UserMenu';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import {
   AppBar,
@@ -9,9 +10,11 @@ import {
   Button,
   ButtonGroup,
 } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 const Layout = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const location = useLocation();
 
   return (
     <>
@@ -31,8 +34,15 @@ const Layout = () => {
                 variant="contained"
                 aria-label="outlined primary button group"
               >
-                <Button href="register">Register</Button>
-                <Button href="login">Login</Button>
+                <Button
+                  href="register"
+                  disabled={location.pathname === '/register'}
+                >
+                  Register
+                </Button>
+                <Button href="login" disabled={location.pathname === '/login'}>
+                  Login
+                </Button>
               </ButtonGroup>
             )}
             {isLoggedIn && <UserMenu />}
@@ -48,7 +58,9 @@ const Layout = () => {
           width: '450px',
         }}
       >
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
   );
